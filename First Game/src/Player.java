@@ -2,8 +2,7 @@ import java.awt.*;
 
 public class Player extends GameObject {
 
-    Handler handler = new Handler();
-    private boolean crash = false;
+    Handler handler;
 
     public Player(int x, int y, ID id, Handler handler){
         super(x, y, id);

@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class BasicEnemy extends GameObject {
 
-    Handler handler = new Handler();
+    Handler handler;
     Random r = new Random();
 
     public BasicEnemy(int x, int y, ID id, Handler handler){
@@ -11,8 +11,8 @@ public class BasicEnemy extends GameObject {
         this.handler = handler;
 
         for (int i = 0; i < handler.object.size(); i++) {
-            velX = r.nextInt(5) + 1;
-            velY = r.nextInt(5) + 1;
+            velX = r.nextInt(5) + 1;        // Initial Position
+            velY = r.nextInt(5) + 1;        // Initial Position
         }
     }
 
@@ -20,11 +20,12 @@ public class BasicEnemy extends GameObject {
     public void tick() {
 
         x += velX;
-        if ((x <= 0) || (x >= Game.WIDTH -23)) velX *= -1;
-
         y += velY;
-        if ((y <= 0) || (y >= Game.HEIGHT -47)) velY *= -1;
 
+        if ((x <= 0) || (x >= Game.WIDTH -23)) velX *= -1;      // velX * -1 = -velX && -velX * -1 = velX
+        if ((y <= 0) || (y >= Game.HEIGHT -47)) velY *= -1;     // velY * -1 = -velY && -velY * -1 = velY
+
+        handler.addObject(new Trail(x, y, ID.Trail,0.045f, Color.red, handler));
     }
 
     @Override
