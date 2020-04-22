@@ -20,7 +20,9 @@ public class Player extends GameObject {
         if (y <= 0) y = 1;
         if (y >= Game.HEIGHT - 72) y = (Game.HEIGHT - 72);
 
-        collision();
+        handler.addObject(new Worm(x, y, ID.Worm, 32, 32, Color.white, 100, handler));
+
+        //collision();
     }
 
     @Override
